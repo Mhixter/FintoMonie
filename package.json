@@ -1,0 +1,26 @@
+{
+  "name": "fintomonie-platform",
+  "version": "1.0.0",
+  "description": "FintoMonie Fintech Banking Platform Starter Kit",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\" \"npm run dev:mobile\"",
+    "dev:backend": "cd packages/backend && npm run start:dev",
+    "dev:admin": "cd packages/admin-dashboard && npm run dev",
+    "dev:mobile": "cd packages/mobile && npm start",
+    "build": "npm run build:shared && npm run build:backend && npm run build:admin",
+    "build:shared": "cd packages/shared && npm run build",
+    "build:backend": "cd packages/backend && npm run build",
+    "build:admin": "cd packages/admin-dashboard && npm run build",
+    "test": "npm run test:backend",
+    "test:backend": "cd packages/backend && npm run test",
+    "docker:dev": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
